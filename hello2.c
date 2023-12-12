@@ -1,4 +1,4 @@
-#include <hello1.h>
+#include "hello1.h"
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/printk.h>
@@ -16,11 +16,11 @@ MODULE_PARM_DESC(number_of_iterations, "Number of how many times 'Hello world' w
 static int __init hello_init(void)
 {
 	if (number_of_iterations == 0) {
-		pr_warn("You printed 0 iterations");
+		pr_warn("You printed 0 iterations\n");
 	} else if (number_of_iterations >= 5 && number_of_iterations <= 10) {
-		pr_warn("You printed between 5 and 10");
+		pr_warn("You printed between 5 and 10\n");
 	} else if (number_of_iterations > 10) {
-		pr_err("You printed number bigger than 10");
+		pr_err("You printed number bigger than 10\n");
 		return -EINVAL;
 	}
 

@@ -1,5 +1,4 @@
-#include <hello1.h>
-// hello1.c
+#include "hello1.h"
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/printk.h>
@@ -40,9 +39,7 @@ static void __exit hello_exit(void)
 {
 	struct my_data *my_data,  *next;
 	list_for_each_entry_safe(my_data, next, &my_list_head, list) {
-		pr_info("Start time: %lld nano seconds\n", ktime_to_ns(my_data->start_time));
-		pr_info("End time: %lld nano seconds\n", ktime_to_ns(my_data->end_time));
-		pr_info("Time elapsed: %lld nano seconds\n", ktime_to_ns(my_data->end_time) - ktime_to_ns(my_data->start_time));
+		pr_info("Time: %lld nano seconds\n", ktime_to_ns(my_data->end_time) - ktime_to_ns(my_data->start_time));
 
 		list_del(&my_data->list);
 
